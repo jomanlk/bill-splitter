@@ -1,25 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import { Layout, Menu, Breadcrumb } from 'antd';
+import SplitBill from './pages/SplitBill';
+const { Header, Content, Footer } = Layout;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Layout className="layout">
+            <Header>
+                <div className="logo" />
+            </Header>
+            <Content style={{ padding: '0 50px' }}>
+                <div className="site-layout-content">
+                    <SplitBill />
+                </div>
+            </Content>
+        </Layout>
+    );
 }
 
 export default App;
