@@ -1,4 +1,4 @@
-import { react, useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Card, Avatar, Statistic, Row, Col, Space, Divider } from 'antd';
 import { MinusCircleOutlined, EditOutlined } from '@ant-design/icons';
 import EditPerson from './EditPerson';

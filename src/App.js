@@ -2,7 +2,7 @@ import './App.css';
 import { Layout } from 'antd';
 import SplitBill from './pages/SplitBill';
 import logo from './logo_transparent.png';
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 
 function App() {
     return (

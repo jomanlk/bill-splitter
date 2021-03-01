@@ -1,4 +1,4 @@
-import { react, useState } from 'react';
+import { useState } from 'react';
 import { Modal, Form, InputNumber, Input, Col, Row, Tooltip } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 

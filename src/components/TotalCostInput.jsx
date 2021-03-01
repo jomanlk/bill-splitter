@@ -1,4 +1,3 @@
-import { react } from 'react';
 import { Form, InputNumber, Button } from 'antd';
 import { DollarOutlined, UserAddOutlined } from '@ant-design/icons';
 

@@ -1,4 +1,4 @@
-import { react, useEffect, useState } from 'react';
+import { useState } from 'react';
 import PersonList from './../components/PersonList';
 import TotalCostInput from './../components/TotalCostInput';
 import { Row, Col } from 'antd';
