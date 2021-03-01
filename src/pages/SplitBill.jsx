@@ -106,7 +106,7 @@ const getPeople = (peopleCount) => {
             img: `https://www.gravatar.com/avatar/${Math.round(
                 Math.random() * 999999
             )}?d=robohash&s=400`,
-            name: 'Anonymous',
+            name: `Anon #${i + 1}`,
             cost: 0,
             prepay: 0,
             maxpay: 0,

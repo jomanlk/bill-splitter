@@ -1,1 +1,21 @@
 @import '~antd/dist/antd.css';
+body {
+    background: #f9e0ae;
+}
+.ant-layout {
+    background: #f9e0ae;
+}
+
+.ant-layout-header {
+    height: 100px;
+    background: #682c0e;
+}
+
+.logo {
+    text-align: center;
+    padding-top: 10px;
+    background: #682c0e;
+}
+.logo img {
+    width: 110px;
+}
