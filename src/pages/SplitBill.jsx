@@ -16,15 +16,21 @@ export default function SplitBill(props) {
         setPeopleCount(values.peopleCount);
         setPersons((persons) => [...tempPersons]);
     };
-    const removePersonHandler = (key) => {
-        persons.splice(key, 1);
-        setPersons((persons) => [...persons]);
+    const removePersonHandler = ({ key }) => {
+        const deletedIndex = persons.findIndex((p) => p.key === key);
+        persons.splice(deletedIndex, 1);
+        setPersons((persons) => [...splitTheBill(total, persons)]);
         setPeopleCount(peopleCount - 1);
+    };
+    const updatePersonHandler = (person) => {
+        const updatedIndex = persons.findIndex((p) => p.key === person.key);
+        persons[updatedIndex] = person;
+        setPersons((persons) => [...splitTheBill(total, persons)]);
     };
 
     return (
         <>
-            <Row style={{ marginTop: 30, marginBottom: 15 }}>
+            <Row style={{ margin: '30px 0' }}>
                 <Col span={24} style={{ textAlign: 'center' }}>
                     <TotalCostInput onCalculate={calculateHandler} />
                 </Col>
@@ -32,7 +38,9 @@ export default function SplitBill(props) {
 
             <PersonList
                 persons={persons}
+                total={total}
                 onRemovePerson={removePersonHandler}
+                onUpdatePerson={updatePersonHandler}
             />
         </>
     );
@@ -40,25 +48,69 @@ export default function SplitBill(props) {
 
 const splitTheBill = (total, people) => {
     const peopleCount = people.length;
-    const baseCost = Math.round(total / peopleCount);
-    people = people.map((person) => {
-        person.cost = baseCost;
-        return person;
-    });
-    return people;
+    let baseCost = Math.round(total / peopleCount);
+    let remainingTotal = total;
+
+    // Get the people who pay more than base cost to the front
+    people.sort((a, b) => b.overpay - a.overpay);
+
+    //run through the entire set and get people who are overpaying
+    let overpaidTotal = 0;
+    let overpayerCount = 0;
+    people
+        .filter((person) => people.overpay)
+        .forEach(({ maxpay, overpay }) => {
+            overpaidTotal += Math.min(overpay, maxpay);
+            overpayerCount++;
+        });
+    //if we have overpayers, then adjust the base cost
+    if (overpayerCount) {
+        baseCost = Math.round(
+            (total - overpaidTotal) / (peopleCount / overpayerCount)
+        );
+    }
+
+    // Get the people who have a max limit
+    const maxPayingPeople = people
+        .filter((person) => person.maxpay)
+        .map((person) => {
+            person.maxpay = Math.min(
+                Math.max(baseCost, person.overpay),
+                person.maxpay
+            );
+            person.cost = person.maxpay;
+            remainingTotal -= person.maxpay;
+            return person;
+        });
+
+    const remPeopleCount = peopleCount - maxPayingPeople.length;
+    let adjustedBaseCost = Math.round(remainingTotal / remPeopleCount);
+    const nonMaxPayingPeople = people
+        .filter((person) => person.maxpay === 0)
+        .map((person, key) => {
+            person.cost = Math.max(adjustedBaseCost, person.overpay);
+            remainingTotal -= person.cost;
+            adjustedBaseCost = Math.round(
+                remainingTotal / (remPeopleCount - key - 1)
+            );
+            return person;
+        });
+    return [...nonMaxPayingPeople, ...maxPayingPeople];
 };
 
 const getPeople = (peopleCount) => {
     const persons = [];
     for (let i = 0; i < peopleCount; i++) {
         persons.push({
+            key: `${Date.now() + i * 1000}`,
             img: `https://www.gravatar.com/avatar/${Math.round(
-                i * 999999
+                Math.random() * 999999
             )}?d=robohash&s=400`,
             name: 'Anonymous',
             cost: 0,
             prepay: 0,
-            maxpay: false,
+            maxpay: 0,
+            overpay: 0,
         });
     }
     return persons;

@@ -10,6 +10,7 @@ export default function AddPerson({ onCalculate }) {
         >
             <Form.Item
                 required
+                style={{ marginBottom: 15 }}
                 name="total"
                 rules={[
                     { required: true, message: "What's the full amount due?" },
@@ -28,7 +29,8 @@ export default function AddPerson({ onCalculate }) {
             </Form.Item>
 
             <Form.Item
-                required={true}
+                required
+                style={{ marginBottom: 15 }}
                 name="peopleCount"
                 rules={[
                     {

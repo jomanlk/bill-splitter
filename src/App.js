@@ -9,7 +9,7 @@ function App() {
             <Header>
                 <div className="logo" />
             </Header>
-            <Content style={{ padding: '0 50px' }}>
+            <Content style={{ padding: '0 30px' }}>
                 <div className="site-layout-content">
                     <SplitBill />
                 </div>
