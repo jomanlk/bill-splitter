@@ -1,7 +1,6 @@
 import './App.css';
 import { Layout } from 'antd';
 import SplitBill from './pages/SplitBill';
-import logo from './logo_transparent.png';
 const { Header, Content } = Layout;
 
 function App() {
@@ -9,7 +8,10 @@ function App() {
         <Layout className="layout">
             <Header>
                 <div className="logo">
-                    <img src={logo} alt="Logo of the app" />
+                    <img
+                        src="/images/logo_transparent.png"
+                        alt="Logo of the app"
+                    />
                 </div>
             </Header>
             <Content style={{ padding: '0 30px' }}>
