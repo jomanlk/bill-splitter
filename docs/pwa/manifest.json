@@ -3,25 +3,25 @@
   "name": "Create React App Sample",
   "icons": [
     {
-      "src": "https://godutch.jnx.me/images/favicon.png",
+      "src": "https://godutch.jnx.me/favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "https://godutch.jnx.me/images/icon-192.png",
+      "src": "https://godutch.jnx.me/logo192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "https://godutch.jnx.me/images/icon-512.png",
+      "src": "https://godutch.jnx.me/logo512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
   "start_url": "https://godutch.jnx.me/",
   "display": "standalone",
-  "theme_color": "#fc8621",
-  "background_color": "#f9e0ae",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
   "url": "https://godutch.jnx.me/",
   "lang": "",
   "screenshots": []
