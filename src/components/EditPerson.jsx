@@ -48,7 +48,6 @@ export default function EditPerson({
     });
     const ruleEitherFlatOrPrepaid = ({ getFieldValue }) => ({
         validator(_, value) {
-            console.log(getFieldValue('prepaid'));
             if (value > 0 && getFieldValue('prepaid') > 0) {
                 return Promise.reject(
                     new Error(

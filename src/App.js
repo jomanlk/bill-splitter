@@ -1,4 +1,4 @@
-import './App.css';
+import './App.less';
 import { Layout } from 'antd';
 import SplitBill from './pages/SplitBill';
 const { Header, Content } = Layout;

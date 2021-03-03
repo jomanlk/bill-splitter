@@ -5,7 +5,7 @@ export default function AddPerson({ onCalculate }) {
     return (
         <Form
             onFinish={onCalculate}
-            initialValues={{ total: 1000, peopleCount: 4 }}
+            //initialValues={{ total: 1000, peopleCount: 4 }}
         >
             <Form.Item
                 required
@@ -22,7 +22,7 @@ export default function AddPerson({ onCalculate }) {
                 <InputNumber
                     style={{ width: '100%', maxWidth: 400 }}
                     size="large"
-                    placeholder="What's the damage?"
+                    placeholder="What's the total amount?"
                     prefix={<DollarOutlined />}
                 />
             </Form.Item>
@@ -38,7 +38,7 @@ export default function AddPerson({ onCalculate }) {
                     },
                     {
                         pattern: new RegExp(/^\d+$/),
-                        message: 'What happened to the rest of the person?',
+                        message: "That doesn't look right",
                     },
                 ]}
             >
