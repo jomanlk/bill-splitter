@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Go Dutch",
+  "name": "Go Dutch : Split bills in no time",
   "icons": [
     {
       "src": "https://godutch.jnx.me/images/favicon.png",
@@ -18,6 +18,7 @@
       "sizes": "512x512"
     }
   ],
+  "orientation": "portrait",
   "start_url": "https://godutch.jnx.me/",
   "display": "standalone",
   "theme_color": "#fc8621",
